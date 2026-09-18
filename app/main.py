@@ -4,6 +4,7 @@ import os
 class CommandStringError(Exception):
     pass
 
+
 def move_file(command: str) -> None:
     command_parts = command.split()
     command_name, source, destination = command_parts
@@ -19,7 +20,8 @@ def move_file(command: str) -> None:
     if directory:
         os.makedirs(directory, exist_ok=True)
 
-    with open(source, "r") as file_source, open(destination, "w") as file_directory:
+    with (open(source, "r") as file_source,
+          open(destination, "w") as file_directory):
         file_directory.write(file_source.read())
 
     os.remove(source)
